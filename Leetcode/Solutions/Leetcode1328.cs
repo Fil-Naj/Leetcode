@@ -1,5 +1,4 @@
 ﻿using Leetcode.Extensions;
-using System;
 
 namespace Leetcode.Solutions
 {

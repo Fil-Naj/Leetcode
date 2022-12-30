@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Leetcode.Solutions
 {
-    [ToBeContinued("Have a look at how it works, watch a video cos this shit kinda confusing.")]
+    [ToBeContinued("Have a look at how it works, watch a video cos this is kinda confusing.")]
     public class Leetcode1531 : ISolution
     {
         public string Name => "String Compression II";
