@@ -45,7 +45,7 @@ namespace Leetcode.Solutions
 
             public void Enqueue(int number) 
             {
-                queue.Enqueue(number, number)
+                queue.Enqueue(number, number);
             }
         }
     }
