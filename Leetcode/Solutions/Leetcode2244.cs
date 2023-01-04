@@ -32,7 +32,7 @@ namespace Leetcode.Solutions
 
             var result = 0;
 
-            if (freq.Values.Contains(1)) return -1;
+            if (freq.ContainsValue(1)) return -1;
 
             foreach (var task in freq)
             {
