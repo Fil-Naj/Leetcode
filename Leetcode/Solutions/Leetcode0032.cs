@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace Leetcode.Solutions
 {
+    // Source: https://www.youtube.com/watch?v=q56S5NIqjdE
     public class Leetcode0032 : ISolution
     {
         public string Name => "Longest Valid Parentheses";
@@ -21,6 +22,8 @@ namespace Leetcode.Solutions
             Console.WriteLine($"Output: {result}");
         }
 
+        // Time: O(n)
+        // Space: O(n)
         public int LongestValidParentheses(string s)
         {
             Stack<int> invalidStarts = new(new int[] { -1 });
@@ -46,6 +49,52 @@ namespace Leetcode.Solutions
                         // Get last valid index by peeking top of stack.
                         result = Math.Max(result, i - invalidStarts.Peek());
                     }
+                }
+            }
+
+            return result;
+        }
+
+        // Time: O(n) as n + n
+        // Space O(1)
+        public int LongestValidParentheses2(string s)
+        {
+            int result = 0;
+
+            var l = 0; var r = 0;
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] == '(')
+                    l++;
+                else
+                    r++;
+
+                if (l == r)
+                {
+                    result = Math.Max(result, r * 2);
+                }
+                else if (r > l)
+                {
+                    l = 0; r = 0;
+                }
+            }
+
+            l = 0; r = 0;
+            for (int i = s.Length - 1; i >= 0; i--)
+            {
+                if (s[i] == ')')
+                    r++;
+                else
+                    l++;
+
+                if (l == r)
+                {
+                    result = Math.Max(result, r * 2);
+                }
+                else if (r < l)
+                {
+                    l = 0; r = 0;
                 }
             }
 
