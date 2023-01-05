@@ -30,7 +30,7 @@ namespace Leetcode.Solutions
             // Given a starting centre point 'l', where l = r or r = l + 1
             // We check to see if chars at l and r are equal. If they are, move each along thei respective direciton by 1
             // Repeat until edge is reached or no longer palindromic (chars differ)
-            Action<int, int> GrowSandwich = (l, r) =>
+            void GrowSandwich(int l, int r)
             {
                 var lp = l;
                 var rp = r;
@@ -48,7 +48,7 @@ namespace Leetcode.Solutions
                     lp -= 1;
                     rp += 1;
                 }
-            };
+            }
 
             for (int i = 0; i < n; i++) 
             {
