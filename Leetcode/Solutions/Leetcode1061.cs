@@ -28,38 +28,48 @@ namespace Leetcode.Solutions
         // Another union find. This time, we have to worry about pointing to the lower index
         public string SmallestEquivalentString(string s1, string s2, string baseStr)
         {
-            var uf = new int[26];
-            for (int i = 0; i < uf.Length; i++) uf[i] = i;
-
-            int Find(int x)
-            {
-                if (x != uf[x])
-                    uf[x] = Find(uf[x]);
-                return uf[x];
-            }
+            var uf = new UnionFind(26);
 
             for (int i = 0; i < s1.Length; i++)
-            {
-                var f1 = Find(s1[i] - 'a');
-                var f2 = Find(s2[i] - 'a');
-
-                // Concerns itself with sorting union in 'lexicographical' order
-                if (f1 > f2)
-                {
-                    (f2, f1) = (f1, f2);
-                }
-
-                uf[f2] = f1;
-            }
+                uf.Union(s1[i] - 'a', s2[i] - 'a');
 
             StringBuilder sb = new();
 
             foreach (var letter in baseStr)
-            {
-                sb.Append((char)(Find(letter - 'a') + 'a'));
-            }
+                sb.Append((char)(uf.Find(letter - 'a') + 'a'));
 
              return sb.ToString();
+        }
+
+        public class UnionFind
+        {
+            public int[] _uf;
+
+            public UnionFind(int n)
+            {
+                _uf = new int[n];
+                for (int i = 0; i < n; i++) _uf[i] = i;
+            }
+
+            public int Find(int x)
+            {
+                if (x != _uf[x])
+                    _uf[x] = Find(_uf[x]);
+
+                return _uf[x];
+            }
+
+            public void Union(int x, int y)
+            {
+                int i = Find(x);
+                int j = Find(y);
+
+                // Deals with sorting in lexicographical order
+                if (i > j)
+                    _uf[i] = j;
+                else
+                    _uf[j] = i;
+            }
         }
     }
 }
