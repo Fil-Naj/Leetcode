@@ -1,6 +1,4 @@
 ﻿using Leetcode.Extensions;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
 
 namespace Leetcode.Solutions
 {
@@ -25,9 +23,6 @@ namespace Leetcode.Solutions
         {
             Dictionary<char, int> letterPositions = new();
             int longestStringLength = 0;
-
-            // We shall use pointers to keep track of the start/end of the substring
-            int back = 0;
 
             for (int i = 0; i < s.Length; i++)
             {
