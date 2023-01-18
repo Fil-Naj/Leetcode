@@ -27,26 +27,24 @@ namespace Leetcode.Solutions
         // To maximise time complexity, we can keep a cumulative track of the number of stones in the piles
         public int MinStoneSum(int[] piles, int k)
         {
-            
-            int minAmount = int.MaxValue;
-            return minAmount;
-        }
+            PriorityQueue<int, int> _queue = new(Comparer<int>.Create((x, y) => y - x));
+            int _stonecount = 0;
 
-        public class PileQueue
-        {
-            private PriorityQueue<int, int> queue;
-            private int NumberOfStones;
-
-            public PileQueue()
+            foreach (int pile in piles)
             {
-                queue = new();
-                NumberOfStones = 0;
+                _queue.Enqueue(pile, pile);
+                _stonecount += pile;
             }
 
-            public void Enqueue(int number) 
+            for (int i = 0; i < k; i++)
             {
-                queue.Enqueue(number, number);
+                var pile = _queue.Dequeue();
+                var remaining = (int)Math.Ceiling(pile / 2M);
+                _stonecount -= (pile - remaining);
+                _queue.Enqueue(remaining, remaining);
             }
+
+            return _stonecount;
         }
     }
 }

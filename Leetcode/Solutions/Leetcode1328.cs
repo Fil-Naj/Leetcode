@@ -40,7 +40,6 @@ namespace Leetcode.Solutions
 
             int middle = (palindrome.Length) / 2;
 
-            string temp;
             for (int i = 0; i < middle; i++)
             {
                 if (palindrome[i] == 'a')
