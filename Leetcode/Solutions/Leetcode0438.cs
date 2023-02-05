@@ -1,4 +1,5 @@
 ﻿using Leetcode.Extensions;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Tracing;
 using System.Reflection.Metadata.Ecma335;
 
@@ -30,44 +31,32 @@ namespace Leetcode.Solutions
 
             var anaCount = p.Length;
 
-            Dictionary<char, int> word = new();
-            Dictionary<char, int> anagram = p.GroupBy(x => x).ToDictionary(x => x.Key, y => y.Count());
+            var anagram = GetFrequencies(p);
+            var word = new int[26];
 
             for (int i = 0; i < s.Length; i++)
             {
-                // Remove character outside realm of the start
-                if (i - anaCount >= 0)
-                {
-                    word[s[i - anaCount]]--;
-                }
+                // Remove frequency count of letter getting kicked out from the front
+                if ((i - anaCount) >= 0)
+                    word[s[i - anaCount] - 'a']--;
 
-                if (word.ContainsKey(s[i]))
-                {
-                    word[s[i]]++;
-                }
-                else
-                {
-                    word[s[i]] = 1;
-                }
+                word[s[i] - 'a']++;
 
-                if (IsAnagram(word, anagram))
+                if (word.SequenceEqual(anagram))
                     result.Add(i - anaCount + 1);
             }
 
             return result;
         }
 
-        public bool IsAnagram(Dictionary<char, int> word, Dictionary<char, int> anagram)
+        public int[] GetFrequencies(string s)
         {
-            if (word.Values.Where(x => x > 0).Count() != anagram.Count) return false;
-
-            foreach (var letter in word)
+            var freq = new int[26];
+            foreach (var letter in s)
             {
-                if (letter.Value > 0 && (!anagram.TryGetValue(letter.Key, out var count) || letter.Value != count))
-                    return false;
+                freq[letter - 'a']++;
             }
-
-            return true;
+            return freq;
         }
     }
 }
