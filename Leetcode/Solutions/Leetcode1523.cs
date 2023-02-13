@@ -25,5 +25,13 @@ namespace Leetcode.Solutions
         {
             return (int)Math.Ceiling(((decimal)high - (decimal)low) / 2m) + (low % 2 == 1 && high % 2 == 1 ? 1 : 0);
         }
+
+        public int CountOddsBitWise(int low, int high)
+        {
+            return (low & 1) +
+                (high & 1) +
+                (high - low) / 2 -
+                (low & 1 & high & 1);
+        }
     }
 }
