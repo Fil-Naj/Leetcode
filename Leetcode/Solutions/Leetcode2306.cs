@@ -1,5 +1,4 @@
 ﻿using Leetcode.Extensions;
-using System.ComponentModel;
 
 namespace Leetcode.Solutions
 {
@@ -20,7 +19,7 @@ namespace Leetcode.Solutions
             Console.WriteLine($"Input: data = {ideas.GetString()}");
             Console.WriteLine($"Output: {result}");
         }
-        
+
         // BAHAHAHAHA ok so
         // I originally had the dictionary be Dictionary<string, HashSet<char>> so it would hold all the suffixes as key
         // This meant that my algorithm would be O(n + n * numSuffixes) where numSuffixes worse case is n. Therefore, O(n + n * n) = O(n^2)

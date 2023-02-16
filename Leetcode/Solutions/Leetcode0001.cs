@@ -28,7 +28,7 @@ namespace Leetcode.Solutions
             {
                 int lookingFor = target - nums[i];
                 if (values.TryGetValue(lookingFor, out var answer))
-                    return new int[] { answer, i};
+                    return new int[] { answer, i };
                 else
                     if (!values.ContainsKey(nums[i])) values.Add(nums[i], i);
             }
