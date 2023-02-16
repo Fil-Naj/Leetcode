@@ -20,7 +20,7 @@ namespace Leetcode.Solutions
                     new(7, null, null)
                 )
             );
-            var result = MaxDepth(root);
+            var result = MaxDepthRecursive(root);
 
             // Prettify
             root.PrintBinaryTree();
@@ -50,6 +50,13 @@ namespace Leetcode.Solutions
             }
 
             return depth;
+        }
+
+        public int MaxDepthRecursive(TreeNode root)
+        {
+            if (root == null) return 0;
+
+            return Math.Max(MaxDepthRecursive(root.left), MaxDepthRecursive(root.right)) + 1;
         }
     }
 }
