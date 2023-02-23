@@ -25,54 +25,34 @@ namespace Leetcode.Solutions
 
         public int FindMaximizedCapital(int k, int w, int[] profits, int[] capital)
         {
-            PriorityQueue<int, int> available = new(Comparer<int>.Create((x, y) => y - x));
+            PriorityQueue<int, int> available = new();
 
-            Dictionary<int, List<int>> costsToProfits = new();
+            PriorityQueue<int, int> minCosts = new();
             for (int i = 0; i < profits.Length; i++)
             {
                 // If available from start, add that baby in to the list of potential projects
                 if (capital[i] <= w)
                 {
-                    available.Enqueue(profits[i], profits[i]);
+                    available.Enqueue(profits[i], -profits[i]);
                     continue;
                 }
 
-                if (costsToProfits.ContainsKey(capital[i]))
-                {
-                    costsToProfits[capital[i]].Add(profits[i]);
-                }
-                else
-                {
-                    costsToProfits[capital[i]] = new List<int> { profits[i] };
-                }
+                minCosts.Enqueue(profits[i], capital[i]);
             }
 
-            var projectsDone = 0;
             // While we have time for work and there is work to do
-            while (projectsDone < k && available.Count > 0)
+            while (k > 0 && available.Count > 0)
             {
                 w += available.Dequeue();
-                projectsDone++;
+                k--;
 
-                var toRemove = new List<int>();
                 // Add in the newly avaivale projects
-                foreach (var item in costsToProfits)
+                while (minCosts.TryPeek(out var _, out var cost) &&  cost <= w)
                 {
-                    if (item.Key > w) continue;
-
-                    foreach (var project in item.Value)
-                    {
-                        available.Enqueue(project, project);
-                    }
-                    toRemove.Add(item.Key);
-                }
-
-                foreach (var item in toRemove)
-                {
-                    costsToProfits.Remove(item);
+                    var profit = minCosts.Dequeue();
+                    available.Enqueue(profit, -profit);
                 }
             }
-
             return w;
         }
     }
