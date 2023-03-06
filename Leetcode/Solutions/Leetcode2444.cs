@@ -1,5 +1,4 @@
 ﻿using Leetcode.Extensions;
-using System.ComponentModel.DataAnnotations;
 
 namespace Leetcode.Solutions
 {
@@ -25,7 +24,7 @@ namespace Leetcode.Solutions
  
         public long CountSubarrays(int[] nums, int minK, int maxK)
         {
-            var result = 5000050000;
+            var result = 0L;
             var minIndex = -1; var maxIndex = -1; var left = -1;
 
             for (int i = 0; i < nums.Length; i++)
