@@ -6,7 +6,7 @@ namespace Leetcode.Solutions
     {
         public string Name => "Longest Cycle in a Graph";
         public string Description => "You are given a directed graph of n nodes numbered from 0 to n - 1, where each node has at most one outgoing edge.\r\n\r\nThe graph is represented with a given 0-indexed array edges of size n, indicating that there is a directed edge from node i to node edges[i]. If there is no outgoing edge from node i, then edges[i] == -1.\r\n\r\nReturn the length of the longest cycle in the graph. If no cycle exists, return -1.\r\n\r\nA cycle is a path that starts and ends at the same node.";
-        public Difficulty Difficulty => Difficulty.Easy;
+        public Difficulty Difficulty => Difficulty.Hard;
 
         public void Solve()
         {
