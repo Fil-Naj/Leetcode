@@ -4,7 +4,7 @@ namespace Leetcode.Solutions
 {
     public class Leetcode0001 : ISolution
     {
-        public string Name => "TwoSum";
+        public string Name => "Two Sum";
         public string Description => "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.";
         public Difficulty Difficulty => Difficulty.Easy;
 
@@ -32,7 +32,7 @@ namespace Leetcode.Solutions
                 else
                     if (!values.ContainsKey(nums[i])) values.Add(nums[i], i);
             }
-            return null;
+            return new int[2];
         }
     }
 }

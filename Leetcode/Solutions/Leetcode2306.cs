@@ -41,7 +41,7 @@ namespace Leetcode.Solutions
                     characters[cha] = new HashSet<string>() { suffix };
             }
 
-            var result = 0l;
+            var result = 0L;
             for (int i = 0; i < characters.Count - 1; i++)
             {
                 var startName = characters.ElementAt(i);

@@ -72,10 +72,10 @@ namespace Leetcode.Solutions
         public class Website
         {
             public string Url;
-            public Website From;
-            public Website To;
+            public Website? From;
+            public Website? To;
 
-            public Website(string url, Website from = null)
+            public Website(string url, Website? from = null)
             {
                 Url = url;
                 From = from;
