@@ -24,7 +24,7 @@ namespace Leetcode.Solutions
 
         public int MaxSatisfaction(int[] satisfaction)
         {
-            Array.Sort(satisfaction, (a, b) =>  b - a);
+            Array.Sort(satisfaction, (a, b) => b - a);
 
             var result = 0;
             var satisSum = 0;
