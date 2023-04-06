@@ -27,7 +27,7 @@ namespace Leetcode.Solutions
             var l = 0;
             var r = people.Length - 1;
 
-            var result = 1;
+            var result = 0;
             while (l <= r)
             {
 
