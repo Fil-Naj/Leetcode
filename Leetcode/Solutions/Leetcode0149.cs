@@ -111,15 +111,14 @@ namespace Leetcode.Solutions
 
                 for (int end = start + 1; end < points.Length; end++)
                 {
-                    var slope = 0M;
-
+                    decimal slope;
                     if (points[start][0] == points[end][0])
                     {
                         slope = decimal.MaxValue;
                     }
                     else
                     {
-                        slope = (decimal)(points[end][1] - points[start][1]) / (decimal)(points[end][0] - points[start][0]);
+                        slope = (points[end][1] - points[start][1]) / (decimal)(points[end][0] - points[start][0]);
                     }
 
                     if (map.ContainsKey(slope))

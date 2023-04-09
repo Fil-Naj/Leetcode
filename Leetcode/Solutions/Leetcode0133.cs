@@ -7,7 +7,7 @@ namespace Leetcode.Solutions
     {
         public string Name => "Clone Graph";
         public string Description => "Given a reference of a node in a connected undirected graph.\r\n\r\nReturn a deep copy (clone) of the graph.\r\n\r\nEach node in the graph contains a value (int) and a list (List[Node]) of its neighbors.";
-        public Difficulty Difficulty => Difficulty.Easy;
+        public Difficulty Difficulty => Difficulty.Medium;
 
         public void Solve()
         {
