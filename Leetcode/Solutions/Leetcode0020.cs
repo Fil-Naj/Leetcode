@@ -20,7 +20,7 @@ namespace Leetcode.Solutions
             Console.WriteLine($"Output: {result}");
         }
 
-        Dictionary<char, char> Brackets = new() 
+        Dictionary<char, char> Brackets = new()
         {
             { '{', '}' },
             { '(', ')' },
