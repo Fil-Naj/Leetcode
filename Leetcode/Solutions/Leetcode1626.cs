@@ -22,7 +22,7 @@ namespace Leetcode.Solutions
         }
 
         // Things we learnt today
-        // For these ongest Increasing Subsequence (LIS) type problems, take things step by step. Literally
+        // For these Longest Increasing Subsequence (LIS) type problems, take things step by step. Literally
         // Check team size for 1, then add anoother, then another
         // Also, sorting makes things bliss
         public int BestTeamScore(int[] scores, int[] ages)
