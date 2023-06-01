@@ -1,20 +1,13 @@
-﻿using System.Text;
-
-namespace Leetcode.Extensions
+﻿namespace Leetcode.Extensions
 {
     public static class MatrixExtensions
     {
         public static string GetString<T>(this T[][] matrix)
         {
-            StringBuilder sb = new();
-
-            foreach (var line in matrix)
-                sb.AppendLine(line.ToString());
-
-            return sb.ToString();
+            return string.Join(Environment.NewLine, matrix.Select(r => r.GetString()));
         }
 
-        private static void PrintMatrix<T>(this T[][] matrix)
+        public static void PrintMatrix<T>(this T[][] matrix)
         {
             Console.WriteLine(matrix.GetString());
         }
