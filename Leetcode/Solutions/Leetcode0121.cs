@@ -22,6 +22,7 @@ namespace Leetcode.Solutions
         }
 
         // Could have been simplified just to used pointers
+        // Time: O(n), Space: O(n)
         public int MaxProfit(int[] prices)
         {
             var n = prices.Length;
@@ -39,6 +40,23 @@ namespace Leetcode.Solutions
                     profit = prices[i] - dp[i];
             }
             return profit;
+        }
+
+        // Lot faster, but apparently more memory is used?
+        // Time: O(n), Space = O(1)
+        public int MaxProfit2(int[] prices)
+        {
+            var lowest = int.MaxValue;
+            var maxProfit = 0;
+
+            foreach (var price in prices)
+            {
+                lowest = Math.Min(lowest, price);
+
+                maxProfit = Math.Max(maxProfit, price - lowest);
+            }
+
+            return maxProfit;
         }
     }
 }
