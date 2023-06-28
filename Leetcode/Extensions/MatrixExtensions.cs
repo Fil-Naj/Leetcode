@@ -6,6 +6,11 @@
         {
             return string.Join(Environment.NewLine, matrix.Select(r => r.GetString()));
         }
+        
+        public static string GetString<T>(this T[][] matrix, string? delimiter = null)
+        {
+            return string.Format("[{0}]", string.Join(delimiter ?? Environment.NewLine, matrix.Select(r => r.GetString())));
+        }
 
         public static void PrintMatrix<T>(this T[][] matrix)
         {
