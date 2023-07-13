@@ -20,7 +20,7 @@
             Print2DUtil(this, 0);
         }
 
-        private static int COUNT = 10;
+        private static readonly int COUNT = 10;
         // Function to print binary tree in 2D
         // It does reverse inorder traversal
         // Source: https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/
@@ -46,7 +46,7 @@
             // Process left child
             Print2DUtil(root.left, space);
         }
-        
+
         // TODO: make into array type string
         //public override string ToString()
         //{ }
