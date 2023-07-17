@@ -46,9 +46,10 @@
             // Process left child
             Print2DUtil(root.left, space);
         }
-        
-        // TODO: make into array type string
-        //public override string ToString()
-        //{ }
+
+        public override string ToString()
+        {
+            return val.ToString();
+        }
     }
 }
