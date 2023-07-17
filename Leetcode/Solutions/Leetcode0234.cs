@@ -1,10 +1,5 @@
 ﻿using Leetcode.Common_Objects;
 using Leetcode.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Leetcode.Solutions
 {
@@ -21,15 +16,15 @@ namespace Leetcode.Solutions
 
             ListNode head = new(1, new(2, new(2, new(1, null))));
             Console.WriteLine($"Input: head = {head}");
-            bool result = isPalindrome(head);
+            bool result = IsPalindrome(head);
 
-            
+
             Console.WriteLine($"Output: {result}");
         }
 
         // See https://cheonhyangzhang.gitbooks.io/leetcode-solutions/content/234-palindrome-linked-list-easy.html
 
-        public bool isPalindrome(ListNode head)
+        public bool IsPalindrome(ListNode head)
         {
             if (head == null || head.next == null)
             {
@@ -42,7 +37,7 @@ namespace Leetcode.Solutions
                 slow = slow.next;
                 fast = fast.next.next;
             }
-            ListNode rev = reverse(slow.next);
+            ListNode rev = Reverse(slow.next);
             slow = head;
             fast = rev;
             while (fast != null)
@@ -57,9 +52,9 @@ namespace Leetcode.Solutions
             return true;
         }
 
-        private ListNode reverse(ListNode node)
+        private static ListNode Reverse(ListNode node)
         {
-            ListNode reverse = new ListNode(-1);
+            ListNode reverse = new(-1);
             while (node != null)
             {
                 ListNode next = node.next;
