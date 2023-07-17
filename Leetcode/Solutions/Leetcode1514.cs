@@ -13,8 +13,8 @@ namespace Leetcode.Solutions
             this.PrintProblemStatement();
 
             var n = 6;
-            var edges = new int[][] 
-            { 
+            var edges = new int[][]
+            {
                 new int[] { 0, 1 },
                 new int[] { 1, 2 },
                 new int[] { 0, 2 },
