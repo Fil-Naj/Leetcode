@@ -1,6 +1,4 @@
 ﻿using Leetcode.Extensions;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
 
 namespace Leetcode.Solutions
 {
