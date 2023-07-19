@@ -6,7 +6,7 @@ namespace Leetcode.Solutions
     {
         public string Name => "LRU Cache";
         public string Description => "Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.\r\n\r\nImplement the LRUCache class:\r\n\r\n    LRUCache(int capacity) Initialize the LRU cache with positive size capacity.\r\n    int get(int key) Return the value of the key if the key exists, otherwise return -1.\r\n    void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.\r\n\r\nThe functions get and put must each run in O(1) average time complexity.";
-        public Difficulty Difficulty => Difficulty.Easy;
+        public Difficulty Difficulty => Difficulty.Medium;
 
         public void Solve()
         {
@@ -38,8 +38,8 @@ namespace Leetcode.Solutions
 
         public class LRUCache
         {
-            private QueueNode _head;
-            private QueueNode _tail;
+            private Node _head;
+            private Node _tail;
             private Dictionary<int, int> _cache;
             private int _capacity;
             private int _size;
@@ -85,7 +85,7 @@ namespace Leetcode.Solutions
 
             private void Enqueue(int key)
             {
-                QueueNode newElement = new(key, next: _head);
+                Node newElement = new(key, next: _head);
                 if (_head is not null)
                 {
                     _head.Previous = newElement;
@@ -160,13 +160,13 @@ namespace Leetcode.Solutions
             }
         }
 
-        private class QueueNode
+        private class Node
         {
             public int Key { get; set; }
-            public QueueNode Previous { get; set; }
-            public QueueNode Next { get; set; }
+            public Node Previous { get; set; }
+            public Node Next { get; set; }
 
-            public QueueNode(int key, QueueNode previous = null, QueueNode next = null)
+            public Node(int key, Node previous = null, Node next = null)
             {
                 Key = key;
                 Previous = previous;
