@@ -30,7 +30,7 @@ namespace Leetcode.Solutions
         {
             var n = intervals.Length;
 
-            Array.Sort(intervals, Comparer<int[]>.Create((a, b) => a[1] - b[1]));
+            Array.Sort(intervals, (a, b) => a[1] - b[1]);
 
             var end = intervals[0][1];
             var count = n - 1;
