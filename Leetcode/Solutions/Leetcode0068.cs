@@ -58,12 +58,12 @@ namespace Leetcode.Solutions
                     else
                     {
                         var spacesRequired = maxWidth - lineLength + (wordsOnLine.Count - 1);
-                        var avgSpace = (int)Math.Round((double)spacesRequired / (wordsOnLine.Count - 1));
                         for (int i = 0; i < wordsOnLine.Count - 1; i++)
                         {
                             sb.Append(wordsOnLine[i]);
-                            sb.Append(' ', Math.Min(spacesRequired, avgSpace));
-                            spacesRequired -= avgSpace;
+                            var spacesToAdd = (int)Math.Ceiling((double)spacesRequired / (wordsOnLine.Count - i - 1));
+                            sb.Append(' ', spacesToAdd);
+                            spacesRequired -= spacesToAdd;
                         }
                         sb.Append(wordsOnLine[^1]);
                     }
