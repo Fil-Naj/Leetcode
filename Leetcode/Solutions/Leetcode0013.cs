@@ -20,56 +20,32 @@ namespace Leetcode.Solutions
             Console.WriteLine($"Output: {result}");
         }
 
-        private enum RomanNumerals
+        private static readonly Dictionary<char, int> RomanNumerals = new()
         {
-            None = 5000,
-            I = 1,
-            V = 5,
-            X = 10,
-            L = 50,
-            C = 100,
-            D = 500,
-            M = 1000,
-        }
+            { 'I', 1 },
+            { 'V', 5 },
+            { 'X', 10 },
+            { 'L', 50 },
+            { 'C', 100 },
+            { 'D', 500 },
+            { 'M', 1000 },
+            { 'M', 1000 },
+        };
 
         public int RomanToInt(string s)
         {
             var sum = 0;
-            var prev = CharToRoman(s[0]);
-            for (var i = 1; i < s.Length; i++)
+            for (var i = 0; i < s.Length; i++)
             {
-                var current = CharToRoman(s[i]);
-                if (current > prev)
-                {
-                    sum += current - prev;
-                    prev = RomanNumerals.None;
-                }
-                else if (current <= prev && prev is not RomanNumerals.None)
-                {
-                    sum += (int)prev;
-                    prev = current;
-                }
+                var current = RomanNumerals[s[i]];
+                // If next number (if exists), is more than current number, reduce sum by current number
+                if (i + 1 < s.Length && current < RomanNumerals[s[i + 1]])
+                    sum -= current;
                 else
-                {
-                    prev = current;
-                }
+                    sum += current;
             }
-
-            if (prev is not RomanNumerals.None)
-                sum += (int)prev;
 
             return sum;
         }
-
-        private static RomanNumerals CharToRoman(char c) => c switch
-        {
-            'I' => RomanNumerals.I,
-            'V' => RomanNumerals.V,
-            'X' => RomanNumerals.X,
-            'L' => RomanNumerals.L,
-            'C' => RomanNumerals.C,
-            'D' => RomanNumerals.D,
-            'M' => RomanNumerals.M,
-        };
     }
 }
