@@ -29,7 +29,6 @@ namespace Leetcode.Solutions
             { 'C', 100 },
             { 'D', 500 },
             { 'M', 1000 },
-            { 'M', 1000 },
         };
 
         public int RomanToInt(string s)
