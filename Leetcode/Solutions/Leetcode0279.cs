@@ -20,36 +20,43 @@ namespace Leetcode.Solutions
             Console.WriteLine($"Output: {result}");
         }
 
-        // Constaint is 1 <= n <= 10_000. To reach upper limit, max base is 100
-        private static readonly int[] PerfectSquares = BuildPerfectSquares();
-
+        // Lagrange's Four Square theorem states that "every natural number can be represented as a sum of four non-negative integer squares"
+        // Therefore, only four possible results: 1, 2, 3, 4
         public int NumSquares(int n)
         {
-            if (n == 1) return 1;
+            // If n is perfect square, return 1
+            if (IsPerfectSquare(n)) return 1;
 
-            var count = int.MaxValue;
-            var startIndex = Array.BinarySearch(PerfectSquares, n);
-            for (int i = startIndex > 0 ? startIndex : -2 - startIndex; i >= 0; i--)
+            // The result is 4 if and only if n can be written in the form of 4^k*(8*m + 7), as per
+            // Legendre's three-square theorem.
+
+            // Reduce to (8*m + 7)
+            while (n % 4 == 0) 
+                n /= 4;
+
+            // If the remainder of n is 7, therefore satisfies (8*m + 7)
+            // Therefore, n satisfies 4^k*(8*m + 7) and the answer is 4
+            if (n % 8 == 7)
+                return 4;
+
+            // Check whether 2 is the result
+            int sqrtN = (int)Math.Sqrt(n);
+            for (int i = 1; i <= sqrtN; i++)
             {
-                var possible = n / PerfectSquares[i];
-                if (possible > 0)
+                if (IsPerfectSquare(n - i * i))
                 {
-                    var next = NumSquares(n - possible * PerfectSquares[i]);
-                    count = Math.Min(count, possible + next);
+                    return 2;
                 }
-                
             }
 
-            return count == int.MaxValue ? 0 : count;
+            // In all other cases, return 3
+            return 3;
         }
 
-        private static int[] BuildPerfectSquares()
+        private bool IsPerfectSquare(int n)
         {
-            var perfectSquares = new int[100];
-            for (var i = 1; i <= perfectSquares.Length; i++)
-                perfectSquares[i - 1] = i * i;
-
-            return perfectSquares;
+            int sqrt = (int)Math.Sqrt(n);
+            return sqrt * sqrt == n;
         }
     }
 }
