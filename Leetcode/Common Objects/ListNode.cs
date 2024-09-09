@@ -13,6 +13,21 @@ namespace Leetcode.Common_Objects
             this.next = next;
         }
 
+        public ListNode(int[] values)
+        {
+            if (values == null || values.Length == 0) return;
+
+            val = values[0];
+
+            var prev = this;
+            for (var i = 1; i < values.Length; i++)
+            {
+                var next = new ListNode(values[i]);
+                prev.next = next;
+                prev = next;
+            }
+        }
+
         public void PrintLinkedList()
         {
             Console.WriteLine(ToString());
